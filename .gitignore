@@ -1,0 +1,19 @@
+# 公開してよいファイルだけを許可する方式（それ以外はすべて送信しない）
+# 入出金データ（バックアップ *.json）や PC 専用ファイルの誤公開を防ぐため
+/*
+!/.gitignore
+!/index.html
+!/manifest.webmanifest
+!/sw.js
+!/css/
+!/js/
+!/icons/
+
+# 許可したフォルダ内でも、想定外の拡張子は送らない
+/css/*
+!/css/*.css
+/js/*
+!/js/*.js
+/icons/*
+!/icons/*.png
+!/icons/*.svg
