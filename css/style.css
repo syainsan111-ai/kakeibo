@@ -198,6 +198,31 @@ fieldset.is-disabled { opacity: .45; }
 .data-table td { text-align: right; }
 .data-table tbody tr:last-child th, .data-table tbody tr:last-child td { border-bottom: 0; }
 
+/* ---------- 設定：項目の管理 ---------- */
+.section-title { font-size: 1.1rem; margin: 8px 0 4px; padding-bottom: 4px; border-bottom: 2px solid var(--primary); }
+.section-title:not(:first-child) { margin-top: 28px; }
+.cat-group { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 12px; }
+.cat-group-title { font-size: 1rem; margin: 0 0 8px; }
+.cat-list { list-style: none; margin: 0 0 10px; padding: 0; }
+.cat-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.cat-row:last-child { border-bottom: 0; }
+.cat-row.is-hidden .cat-name { color: var(--muted); text-decoration: line-through; }
+.cat-swatch { width: 16px; height: 16px; border-radius: 4px; flex: none; }
+.cat-name-box { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+.cat-name { font-weight: 600; overflow-wrap: anywhere; }
+.cat-count { font-size: .78rem; color: var(--muted); }
+.tag-hidden { font-size: .72rem; padding: 0 6px; border-radius: 999px; background: #e0e3e7; color: var(--muted); }
+.cat-actions { display: flex; gap: 4px; flex: none; }
+.cat-actions .btn-small { padding: 4px 8px; }
+.btn-icon { width: 36px; min-height: 36px; padding: 0; font-size: 1rem; }
+.field-color input[type="color"] { width: 64px; height: 44px; padding: 2px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); cursor: pointer; }
+.chip-hidden { opacity: .7; }
+@media (max-width: 420px) {
+  .cat-row { flex-wrap: wrap; }
+  .cat-name-box { flex-basis: calc(100% - 26px); }
+  .cat-actions { width: 100%; justify-content: flex-end; }
+}
+
 @media (min-width: 640px) {
   .cell { min-height: 84px; padding: 6px; }
   .day-num { font-size: .9rem; }

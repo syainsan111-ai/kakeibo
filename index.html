@@ -19,7 +19,6 @@
 <body>
 <header class="app-header">
   <h1>入出金カレンダ</h1>
-  <button id="btn-data" class="btn-header" type="button">データ管理</button>
 </header>
 
 <main>
@@ -113,11 +112,39 @@
     <p id="graph-error" class="error" role="alert"></p>
     <div id="graph-output" class="graph-output"></div>
   </section>
+
+  <!-- ===== 設定画面 ===== -->
+  <section id="view-settings" class="view" aria-label="設定" hidden>
+    <h2 class="section-title">項目の管理</h2>
+    <p class="muted">項目の追加・名前や色の変更・並び替え・非表示ができます。名前を変えても、入力済みのデータはそのまま引き継がれます。非表示にした項目は入力の選択肢から消えますが、過去のデータやグラフには残ります。</p>
+
+    <div class="cat-group">
+      <h3 class="cat-group-title"><span class="badge income">入金</span> の項目</h3>
+      <ul id="cat-list-income" class="cat-list"></ul>
+      <button type="button" id="add-cat-income" class="btn-secondary btn-block">＋ 入金の項目を追加</button>
+    </div>
+    <div class="cat-group">
+      <h3 class="cat-group-title"><span class="badge expense">出金</span> の項目</h3>
+      <ul id="cat-list-expense" class="cat-list"></ul>
+      <button type="button" id="add-cat-expense" class="btn-secondary btn-block">＋ 出金の項目を追加</button>
+    </div>
+
+    <h2 class="section-title">データ管理</h2>
+    <p class="muted">データはこの端末（ブラウザ）の中だけに保存され、外部には送信されません。ブラウザのデータ消去で消えるため、定期的に書き出して保管してください。端末の間でデータを移すときもこの書き出し／読み込みを使います。</p>
+    <div class="data-actions">
+      <button type="button" id="btn-export" class="btn-primary">バックアップを書き出し</button>
+      <label class="btn-secondary file-btn">
+        バックアップを読み込み
+        <input type="file" id="file-import" accept="application/json,.json">
+      </label>
+    </div>
+  </section>
 </main>
 
 <nav class="tabbar" aria-label="画面切替">
   <button type="button" class="tab active" data-tab="calendar">カレンダ</button>
   <button type="button" class="tab" data-tab="graph">グラフ</button>
+  <button type="button" class="tab" data-tab="settings">設定</button>
 </nav>
 
 <!-- ===== 入力・編集フォーム ===== -->
@@ -161,21 +188,26 @@
   </div>
 </div>
 
-<!-- ===== データ管理 ===== -->
-<div id="data-modal" class="modal" hidden>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="data-title">
-    <h3 id="data-title">データ管理</h3>
-    <p class="muted">データはこの端末（ブラウザ）の中だけに保存され、外部には送信されません。ブラウザのデータ消去で消えるため、定期的に書き出して保管してください。PC と iPhone の間でデータを移すときもこの書き出し／読み込みを使います。</p>
-    <div class="data-actions">
-      <button type="button" id="btn-export" class="btn-primary">バックアップを書き出し</button>
-      <label class="btn-secondary file-btn">
-        バックアップを読み込み
-        <input type="file" id="file-import" accept="application/json,.json">
+<!-- ===== 項目の追加・編集 ===== -->
+<div id="cat-modal" class="modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cat-title">
+    <h3 id="cat-title"></h3>
+    <p id="cat-type-label" class="muted"></p>
+    <form id="cat-form" novalidate>
+      <label class="field">
+        <span>項目名（20文字まで）</span>
+        <input id="c-name" type="text" maxlength="20" autocomplete="off" placeholder="例：交通費">
       </label>
-    </div>
-    <div class="modal-actions">
-      <button type="button" id="data-close" class="btn-secondary">閉じる</button>
-    </div>
+      <label class="field field-color">
+        <span>グラフの色</span>
+        <input id="c-color" type="color">
+      </label>
+      <p id="cat-error" class="error" role="alert"></p>
+      <div class="modal-actions">
+        <button type="button" id="cat-cancel" class="btn-secondary">キャンセル</button>
+        <button type="submit" class="btn-primary">保存</button>
+      </div>
+    </form>
   </div>
 </div>
 

@@ -1,7 +1,7 @@
 'use strict';
 // オフライン対応用 Service Worker（ネットワーク優先・失敗時はキャッシュ）
 // アプリのファイルを更新したら CACHE の番号を上げる
-const CACHE = 'kakeibo-v1';
+const CACHE = 'kakeibo-v2';
 const ASSETS = [
   './',
   './index.html',
